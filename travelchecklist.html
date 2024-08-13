@@ -33,8 +33,15 @@
             }
         });
         
+        document.getElementById("uncheck_all").firstChild.addEventListener('click', function(e) {
+            uncheckAll();
+        });
+        
         getAllCheckedFromId('mala_mao', 'count_mao');
         getAllCheckedFromId('mala_despachada', 'count_despachada');
+        
+        document.getElementById('total_mao').innerHTML = document.getElementById('mala_mao').querySelectorAll("input[type='checkbox']").length;
+        document.getElementById('total_despachada').innerHTML = document.getElementById('mala_despachada').querySelectorAll("input[type='checkbox']").length;
     }
 </script>
 <style type="text/css">
@@ -176,6 +183,22 @@
     }
     
     @media only screen and (max-width: 1200px) {
+        nav {
+            height: 8em;
+            margin: 0 1em 0 2em;
+            width: calc(100% - 4em);
+        }
+        
+        nav h1 {
+            font-size: 2.625em;
+            padding-top: 0.3em;
+        }
+        
+        nav h5 {
+            font-size: 1.225em;
+            margin-top: -1.125em;
+        }
+        
         main {
             font-size: xx-large;
             grid-template-columns: 100%;
@@ -189,7 +212,7 @@
     <body>
         <nav>
             <h1>Check-list de Viagem</h1>
-            <h5><a href="javascript:uncheckAll();">Desmarcar todos</a></h5>
+            <h5 id="uncheck_all"><a href="#">Desmarcar todos</a></h5>
         </nav>
         <main>
             <div id="mala_mao">
@@ -685,6 +708,6 @@
     </body>
 </html>
 <script type="text/javascript">
-    document.getElementById('total_mao').innerHTML = document.getElementById('mala_mao').querySelectorAll("input[type='checkbox']").length;
-    document.getElementById('total_despachada').innerHTML = document.getElementById('mala_despachada').querySelectorAll("input[type='checkbox']").length;
+    //document.getElementById('total_mao').innerHTML = document.getElementById('mala_mao').querySelectorAll("input[type='checkbox']").length;
+    //document.getElementById('total_despachada').innerHTML = document.getElementById('mala_despachada').querySelectorAll("input[type='checkbox']").length;
 </script>
