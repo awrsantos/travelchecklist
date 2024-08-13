@@ -175,7 +175,7 @@
         top: -4px;
     }
     
-    @media screen and (max-width: 600px) {
+    @media only screen and (max-width: 1200px) {
         main {
             font-size: xx-large;
             grid-template-columns: 100%;
@@ -685,13 +685,6 @@
     </body>
 </html>
 <script type="text/javascript">
-    var allLi = document.getElementsByTagName("li");
-    for (let i = 0; i < allLi.length; i++) {
-        allLi[i].addEventListener("click", function(e) {
-            console.log(e);
-        });
-    }
-    
     document.getElementById('total_mao').innerHTML = document.getElementById('mala_mao').querySelectorAll("input[type='checkbox']").length;
     document.getElementById('total_despachada').innerHTML = document.getElementById('mala_despachada').querySelectorAll("input[type='checkbox']").length;
 </script>
