@@ -1,9 +1,5 @@
 <!DOCTYPE html>
 <script type="text/javascript">
-    if (location.protocol == 'https:') {
-        location.replace(`http:${location.href.substring(location.protocol.length)}`);
-    }
-    
     let darkMode = localStorage.getItem('dark_mode');
     if (darkMode === null) {
         darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -283,7 +279,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <head>
         <title>Check-List de Viagem</title>
-        <meta charset="UTF-8">
+        <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     </head>
     <body>
         <nav>
