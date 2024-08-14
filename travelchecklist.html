@@ -126,12 +126,12 @@
     
     nav span:nth-child(2) {
         float: left;
-        margin-left: 0.65em;
+        padding-left: 0.86em;
     }
     
     nav span:nth-child(n+3) {
         float: right;
-        margin-right: 0.65em;
+        padding-right: 0.86em;
     }
     
     main {
@@ -215,7 +215,7 @@
         grid-template-columns: 1em auto;
         line-height: 1.5em;
         list-style: none;
-        padding-left: 10px;
+        padding-left: 0.5em;
         width: max-content;
     }
     
@@ -247,6 +247,19 @@
             padding-top: 0.3em;
         }
         
+        nav span:nth-child(n+2) {
+            font-size: 2.5em !important;
+            margin-top: -1.225em;
+        }
+        
+        nav span:nth-child(2) {
+            padding-left: 1.16em;
+        }
+        
+        nav span:nth-child(n+3) {
+            padding-right: 1.16em;
+        }
+        
         main {
             font-size: xx-large;
             grid-template-columns: 100%;
@@ -258,11 +271,6 @@
         
         main > div:nth-child(2) {
             display: none;
-        }
-        
-        .uncheck {
-            font-size: 2.5em !important;
-            margin-top: -1.225em;
         }
     }
 </style>
