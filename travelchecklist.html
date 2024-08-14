@@ -97,7 +97,7 @@
         background-color: #000000bd;
         border-radius: .5em;
         display: grid;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: 49.95% 0.1% 49.95%;
         margin: 0 1em 6em;
         padding-bottom: 20px;
         position: relative;
@@ -106,6 +106,12 @@
     
     main > div:first-child {
         padding: 0 0 0 1em;
+    }
+    
+    main > div:nth-child(2) {
+        border-left: #FFF solid 0.0125em;
+        margin-left: -0.7em;
+        margin-top: 0.9em;
     }
     
     main h2 {
@@ -198,6 +204,10 @@
         
         main > div {
             padding: 0 0 0 1em;
+        }
+        
+        main > div:nth-child(2) {
+            display: none;
         }
         
         .uncheck {
@@ -446,6 +456,7 @@
                     </label>
                 </div>
             </div>
+            <div></div>
             <div id="mala_despachada">
                 <div>
                     <h2>Mala para Despachar
