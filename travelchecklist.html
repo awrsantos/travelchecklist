@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <script type="text/javascript">
+    if (location.protocol == 'https:') {
+        location.replace(`http:${location.href.substring(location.protocol.length)}`);
+    }
+    
     let darkMode = localStorage.getItem('dark_mode');
     if (darkMode === null) {
         darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
