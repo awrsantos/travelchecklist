@@ -1,5 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <script type="text/javascript">
+    let darkMode = sessionStorage.getItem('dark_mode');
+    if (darkMode === null) {
+        darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    } else {
+        darkMode = darkMode == 'S';
+    }
+    sessionStorage.setItem('dark_mode', darkMode ? 'S' : 'N');
+    
     function getAllCheckedFromId(id, spanCount) {
         var all = document.getElementById(id).querySelectorAll("input[type='checkbox']");
         var checkeds = 0;
@@ -26,7 +34,33 @@
         document.getElementById('count_despachada').innerHTML = 0;
     }
     
+    function toggleMode(changeDarkMode) {
+        var elements = [document.body, document.querySelector("nav"), document.querySelector("main")];
+        elements.forEach(function(e) {
+            e.classList.toggle("light-mode");
+        });
+        
+        if (changeDarkMode) {
+            darkMode = !darkMode;
+            sessionStorage.setItem('dark_mode', darkMode ? 'S' : 'N');
+        }
+        
+        displayIconMode();
+    }
+    
+    function displayIconMode() {
+        if (darkMode) {
+            document.getElementById("toogle_mode_light").style.display = "block";
+            document.getElementById("toogle_mode_dark").style.display = "none";
+        } else {
+            document.getElementById("toogle_mode_light").style.display = "none";
+            document.getElementById("toogle_mode_dark").style.display = "block";
+        }
+    }
+    
     window.onload = function() {
+        displayIconMode();
+        
         document.querySelectorAll("input[type='checkbox']").forEach(function(checkbox) {
             if (sessionStorage.getItem(checkbox.name) == 'S') {
                 document.getElementsByName(checkbox.name)[0].checked = true;
@@ -69,8 +103,7 @@
     }
     
     nav {
-        /*background-color: #000000bd;*/
-        background-color: #000;
+        background-color: #191919;
         border-radius: 0 0 .5em .5em;
         box-shadow: 0 0 .5em #000;
         height: 4.1em;
@@ -88,13 +121,21 @@
     
     nav span {
         cursor: pointer;
-        float: left;
         margin-top: -1.5em;
+    }
+    
+    nav span:nth-child(2) {
+        float: left;
         margin-left: 0.65em;
     }
     
+    nav span:nth-child(n+3) {
+        float: right;
+        margin-right: 0.65em;
+    }
+    
     main {
-        background-color: #000000bd;
+        background-color: #252525;
         border-radius: .5em;
         display: grid;
         grid-template-columns: 49.95% 0.1% 49.95%;
@@ -185,6 +226,15 @@
         top: -0.225em;
     }
     
+    .light-mode {
+        background-color: #FFF;
+        color: #000;
+    }
+    
+    .light-mode > div:nth-child(2) {
+        border-left: #000 solid 0.15em;
+    }
+    
     @media only screen and (max-width: 1200px) {
         nav {
             height: 8em;
@@ -228,7 +278,12 @@
             <span class="material-symbols-outlined uncheck" id="uncheck_all">
                 remove_selection
             </span>
-            <!--<h5 id="uncheck_all"><a href="#">Desmarcar todos</a></h5>-->
+            <span class="material-symbols-outlined" id="toogle_mode_light" onclick="toggleMode(true);">
+                light_mode
+            </span>
+            <span class="material-symbols-outlined" id="toogle_mode_dark" onclick="toggleMode(true);">
+                dark_mode
+            </span>
         </nav>
         <main>
             <div id="mala_mao">
@@ -725,6 +780,7 @@
     </body>
 </html>
 <script type="text/javascript">
-    //document.getElementById('total_mao').innerHTML = document.getElementById('mala_mao').querySelectorAll("input[type='checkbox']").length;
-    //document.getElementById('total_despachada').innerHTML = document.getElementById('mala_despachada').querySelectorAll("input[type='checkbox']").length;
+    if (!darkMode) {
+        toggleMode(false);
+    }
 </script>
