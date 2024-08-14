@@ -33,7 +33,7 @@
             }
         });
         
-        document.getElementById("uncheck_all").firstChild.addEventListener('click', function(e) {
+        document.getElementById("uncheck_all").addEventListener('click', function(e) {
             uncheckAll();
         });
         
@@ -85,16 +85,12 @@
         text-align: center;
         text-transform: uppercase;
     }
-
-    nav h5 {
-        margin-top: -2em;
-        padding-right: 10px;
-        text-align: right;
-    }
-
-    nav h5 a {
-        color: #FFF;
-        text-decoration: none;
+    
+    nav span {
+        cursor: pointer;
+        float: left;
+        margin-top: -1.5em;
+        margin-left: 0.65em;
     }
     
     main {
@@ -195,11 +191,6 @@
             padding-top: 0.3em;
         }
         
-        nav h5 {
-            font-size: 1.225em;
-            margin-top: -1.125em;
-        }
-        
         main {
             font-size: xx-large;
             grid-template-columns: 100%;
@@ -208,9 +199,15 @@
         main > div {
             padding: 0 0 0 1em;
         }
+        
+        .uncheck {
+            font-size: 2.5em !important;
+            margin-top: -1.225em;
+        }
     }
 </style>
 <html lang="pt-br">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <head>
         <title>Check-List de Viagem</title>
         <meta charset="UTF-8">
@@ -218,7 +215,10 @@
     <body>
         <nav>
             <h1>Check-list de Viagem</h1>
-            <h5 id="uncheck_all"><a href="#">Desmarcar todos</a></h5>
+            <span class="material-symbols-outlined uncheck" id="uncheck_all">
+                remove_selection
+            </span>
+            <!--<h5 id="uncheck_all"><a href="#">Desmarcar todos</a></h5>-->
         </nav>
         <main>
             <div id="mala_mao">
