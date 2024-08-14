@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <script type="text/javascript">
-    let darkMode = sessionStorage.getItem('dark_mode');
+    let darkMode = localStorage.getItem('dark_mode');
     if (darkMode === null) {
         darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
     } else {
         darkMode = darkMode == 'S';
     }
-    sessionStorage.setItem('dark_mode', darkMode ? 'S' : 'N');
+    localStorage.setItem('dark_mode', darkMode ? 'S' : 'N');
     
     function getAllCheckedFromId(id, spanCount) {
         var all = document.getElementById(id).querySelectorAll("input[type='checkbox']");
@@ -15,9 +15,9 @@
         all.forEach(function(checkbox) {
             if (checkbox.checked) {
                 checkeds++;
-                sessionStorage.setItem(checkbox.name, 'S');
+                localStorage.setItem(checkbox.name, 'S');
             } else {
-                sessionStorage.setItem(checkbox.name, 'N');
+                localStorage.setItem(checkbox.name, 'N');
             }
         });
         
@@ -27,7 +27,7 @@
     function uncheckAll() {
         document.querySelectorAll("input[type='checkbox']:checked").forEach(function(checkbox) {
             checkbox.checked = false;
-            sessionStorage.setItem(checkbox.name, 'N');
+            localStorage.setItem(checkbox.name, 'N');
         });
         
         document.getElementById('count_mao').innerHTML = 0;
@@ -42,7 +42,7 @@
         
         if (changeDarkMode) {
             darkMode = !darkMode;
-            sessionStorage.setItem('dark_mode', darkMode ? 'S' : 'N');
+            localStorage.setItem('dark_mode', darkMode ? 'S' : 'N');
         }
         
         displayIconMode();
@@ -62,7 +62,7 @@
         displayIconMode();
         
         document.querySelectorAll("input[type='checkbox']").forEach(function(checkbox) {
-            if (sessionStorage.getItem(checkbox.name) == 'S') {
+            if (localStorage.getItem(checkbox.name) == 'S') {
                 document.getElementsByName(checkbox.name)[0].checked = true;
             }
         });
